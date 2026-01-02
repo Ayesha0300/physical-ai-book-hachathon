@@ -1,0 +1,10 @@
+This is a placeholder for the LLM planning process diagram.
+
+The diagram should illustrate:
+1. Input: Natural language goal ("Clean the kitchen")
+2. LLM Processing: Task decomposition and reasoning
+3. Output: Structured plan with subtasks
+4. Integration with perception systems
+5. Execution on robotic platform
+
+The diagram should show how the LLM serves as the cognitive bridge between high-level goals and low-level robot actions.

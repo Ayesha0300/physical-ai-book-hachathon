@@ -1,0 +1,190 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="simple_terrain_world">
+    <!-- Include ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Include sky -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Simple terrain model -->
+    <model name="simple_terrain">
+      <pose>0 0 0 0 0 0</pose>
+      <static>true</static>
+      <link name="terrain_link">
+        <collision name="terrain_collision">
+          <geometry>
+            <heightmap>
+              <uri>model://terrain_heightmap.png</uri>
+              <size>20 20 3</size>
+              <pos>0 0 0</pos>
+            </heightmap>
+          </geometry>
+        </collision>
+        <visual name="terrain_visual">
+          <geometry>
+            <heightmap>
+              <uri>model://terrain_heightmap.png</uri>
+              <size>20 20 3</size>
+              <pos>0 0 0</pos>
+            </heightmap>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Dirt</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Static obstacles -->
+    <model name="box_obstacle_1">
+      <pose>-3 2 0.5 0 0 0</pose>
+      <static>true</static>
+      <link name="box_link">
+        <collision name="box_collision">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="box_visual">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Blue</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Another static obstacle -->
+    <model name="cylinder_obstacle">
+      <pose>2 -3 1 0 0 0</pose>
+      <static>true</static>
+      <link name="cylinder_link">
+        <collision name="cylinder_collision">
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>2</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="cylinder_visual">
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>2</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Red</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Dynamic obstacle (simple moving object) -->
+    <model name="moving_sphere">
+      <pose>-5 -5 1 0 0 0</pose>
+      <static>false</static>
+      <link name="sphere_link">
+        <collision name="sphere_collision">
+          <geometry>
+            <sphere>
+              <radius>0.3</radius>
+            </sphere>
+          </geometry>
+        </collision>
+        <visual name="sphere_visual">
+          <geometry>
+            <sphere>
+              <radius>0.3</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.01</ixx>
+            <iyy>0.01</iyy>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+      </link>
+      <!-- Add plugin for simple movement -->
+      <plugin name="model_pusher" filename="libgazebo_ros_p3d.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>10</updateRate>
+        <bodyName>sphere_link</bodyName>
+        <topicName>moving_sphere/pose</topicName>
+      </plugin>
+    </model>
+
+    <!-- Lighting -->
+    <light name="directional_light" type="directional">
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.5 0.5 0.5 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.3 0.3 -1</direction>
+    </light>
+
+    <!-- Add a simple building structure -->
+    <model name="simple_building">
+      <pose>5 5 0 0 0 0</pose>
+      <static>true</static>
+      <link name="building_link">
+        <collision name="building_collision">
+          <geometry>
+            <box>
+              <size>4 4 3</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="building_visual">
+          <geometry>
+            <box>
+              <size>4 4 3</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>

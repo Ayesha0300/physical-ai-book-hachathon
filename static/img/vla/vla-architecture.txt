@@ -1,0 +1,10 @@
+This is a placeholder for the VLA system architecture diagram.
+
+The diagram should show:
+1. Input layer: Voice, text, visual input
+2. Cognitive layer: LLM processing and planning
+3. Perception layer: Vision and sensor processing
+4. Control layer: ROS 2 action execution
+5. Integration layer: Coordination and safety mechanisms
+6. Data flows between all components
+7. Feedback loops for monitoring and adaptation

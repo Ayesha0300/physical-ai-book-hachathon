@@ -1,0 +1,131 @@
+.module-card {
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-card-border-radius);
+  padding: 1.5rem;
+  transition: transform var(--ifm-transition-fast), box-shadow var(--ifm-transition-fast);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.module-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--ifm-global-shadow-md);
+}
+
+.module-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.module-card__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--doc-text-primary-light);
+  flex: 1;
+}
+
+[data-theme='dark'] .module-card__title {
+  color: var(--doc-text-primary-dark);
+}
+
+.module-card__badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-left: 0.75rem;
+  flex-shrink: 0;
+}
+
+.module-card__badge--beginner {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: var(--accent-success);
+}
+
+.module-card__badge--intermediate {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: var(--accent-warning);
+}
+
+.module-card__badge--advanced {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: var(--accent-error);
+}
+
+.module-card__description {
+  font-size: 1rem;
+  color: var(--doc-text-secondary-light);
+  margin: 0 0 1.5rem 0;
+  flex: 1;
+}
+
+[data-theme='dark'] .module-card__description {
+  color: var(--doc-text-secondary-dark);
+}
+
+.module-card__tools {
+  margin-bottom: 1.5rem;
+}
+
+.module-card__tools strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--doc-text-primary-light);
+  font-size: 0.875rem;
+}
+
+[data-theme='dark'] .module-card__tools strong {
+  color: var(--doc-text-primary-dark);
+}
+
+.module-card__tools-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.module-card__tool-badge {
+  background-color: var(--ifm-color-emphasis-100);
+  color: var(--doc-text-secondary-light);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+[data-theme='dark'] .module-card__tool-badge {
+  background-color: var(--doc-surface-dark);
+  color: var(--doc-text-secondary-dark);
+}
+
+.module-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--ifm-transition-fast);
+  margin-top: auto;
+}
+
+.module-card__link:hover {
+  color: var(--ifm-color-primary-dark);
+  text-decoration: underline;
+}
+
+.module-card__link-icon {
+  transition: transform var(--ifm-transition-fast);
+}
+
+.module-card__link:hover .module-card__link-icon {
+  transform: translateX(2px);
+}

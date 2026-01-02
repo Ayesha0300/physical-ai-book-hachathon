@@ -1,0 +1,41 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparison between software systems and physical robot systems">
+  <title>Comparison between software systems and physical robot systems</title>
+  <desc>This diagram compares the characteristics of traditional software systems with physical robot systems. The left side shows a software system with predictable digital environment, flexible timing, and data processing capabilities. The right side shows a physical robot system with dynamic physical environment, real-time constraints, and safety-critical operations.</desc>
+  <style>
+    .title { font: bold 16px sans-serif; fill: #333; }
+    .subtitle { font: 14px sans-serif; fill: #555; }
+    .box { fill: #e0f0ff; stroke: #0066cc; stroke-width: 2; rx: 10; ry: 10; }
+    .arrow { stroke: #666; stroke-width: 2; marker-end: url(#arrowhead); }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7"
+      refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666" />
+    </marker>
+  </defs>
+
+  <!-- Software System -->
+  <rect x="50" y="50" width="300" height="300" class="box"/>
+  <text x="60" y="70" class="title">Software System</text>
+  <text x="60" y="90" class="subtitle">Predictable Digital Environment</text>
+  <text x="60" y="120" class="subtitle">• Data Processing</text>
+  <text x="60" y="140" class="subtitle">• User Requests</text>
+  <text x="60" y="160" class="subtitle">• Computational Tasks</text>
+  <text x="60" y="180" class="subtitle">• Flexible Timing</text>
+  <text x="60" y="200" class="subtitle">• Deterministic</text>
+
+  <!-- Physical Robot -->
+  <rect x="450" y="50" width="300" height="300" class="box"/>
+  <text x="460" y="70" class="title">Physical Robot</text>
+  <text x="460" y="90" class="subtitle">Dynamic Physical Environment</text>
+  <text x="460" y="120" class="subtitle">• Sensor Processing</text>
+  <text x="460" y="140" class="subtitle">• Actuator Control</text>
+  <text x="460" y="160" class="subtitle">• Real-time Constraints</text>
+  <text x="460" y="180" class="subtitle">• Safety Critical</text>
+  <text x="460" y="200" class="subtitle">• Non-deterministic</text>
+
+  <!-- Comparison Arrow -->
+  <line x1="360" y1="200" x2="440" y2="200" class="arrow"/>
+  <text x="380" y="190" class="title">Key Differences</text>
+</svg>

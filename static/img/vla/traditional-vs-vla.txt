@@ -1,0 +1,16 @@
+This is a placeholder for the traditional vs VLA robotics comparison diagram.
+
+The diagram should show:
+- Left side: Traditional rule-based robotics
+  - Pre-programmed behaviors
+  - Limited adaptability
+  - Explicit scenario programming
+  - Rigid control structure
+
+- Right side: Vision-Language-Action (VLA) robotics
+  - Natural language interface
+  - Visual perception integration
+  - Flexible action execution
+  - Human-intuitive control
+
+The diagram should highlight the key differences in approach and capabilities between these two paradigms.

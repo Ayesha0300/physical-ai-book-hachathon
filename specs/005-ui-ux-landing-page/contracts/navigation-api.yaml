@@ -1,0 +1,41 @@
+# Navigation API Contract
+
+## Module Navigation API
+
+### Get Module List
+- **Endpoint**: `/api/modules`
+- **Method**: GET
+- **Description**: Retrieve list of available modules for display in the module grid
+- **Response**:
+  ```json
+  {
+    "modules": [
+      {
+        "id": "string",
+        "title": "string",
+        "description": "string",
+        "tools": ["string"],
+        "difficulty": "string",
+        "route": "string"
+      }
+    ]
+  }
+  ```
+
+### Get Current Route Status
+- **Endpoint**: `/api/navigation/current`
+- **Method**: GET
+- **Description**: Get the current active navigation item for highlighting
+- **Response**:
+  ```json
+  {
+    "currentRoute": "string",
+    "navigationItems": [
+      {
+        "label": "string",
+        "route": "string",
+        "isActive": "boolean"
+      }
+    ]
+  }
+  ```

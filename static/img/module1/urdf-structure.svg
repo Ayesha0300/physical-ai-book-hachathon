@@ -1,0 +1,135 @@
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="URDF Structure: Links, Joints, and Frames">
+  <title>URDF Structure: Links, Joints, and Frames</title>
+  <desc>This diagram shows the structure of a URDF model with links, joints, and coordinate frames. It illustrates a humanoid robot with base link, head, arms, and legs. It also shows the three main components of URDF: Visual properties, Collision properties, and Inertial properties.</desc>
+  <style>
+    .title { font: bold 16px sans-serif; fill: #333; }
+    .subtitle { font: 14px sans-serif; fill: #555; }
+    .link { fill: #e8f4e8; stroke: #2e8555; stroke-width: 2; rx: 8; ry: 8; }
+    .joint { fill: #ffe0e0; stroke: #a62c2c; stroke-width: 2; rx: 8; ry: 8; }
+    .frame { fill: #e0e8ff; stroke: #2c5ca6; stroke-width: 2; }
+    .arrow { stroke: #666; stroke-width: 2; marker-end: url(#arrowhead); }
+    .label { font: 12px sans-serif; fill: #333; }
+    .data { font: 10px sans-serif; fill: #555; }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7"
+      refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="300" y="30" class="title">URDF Structure: Links, Joints, and Frames</text>
+
+  <!-- Robot Structure -->
+  <text x="100" y="80" class="subtitle">Humanoid Robot URDF Structure</text>
+
+  <!-- Base Link -->
+  <rect x="100" y="100" width="100" height="60" class="link"/>
+  <text x="125" y="125" class="label">Base Link</text>
+  <text x="110" y="140" class="data">(Torso)</text>
+
+  <!-- Head Link -->
+  <circle cx="150" cy="60" r="25" class="link"/>
+  <text x="135" y="60" class="label">Head</text>
+
+  <!-- Left Arm -->
+  <rect x="40" y="120" width="60" height="30" class="link"/>
+  <text x="50" y="140" class="label">Upper Arm</text>
+
+  <rect x="10" y="160" width="30" height="60" class="link"/>
+  <text x="15" y="190" class="label">Lower</text>
+  <text x="15" y="205" class="label">Arm</text>
+
+  <!-- Right Arm -->
+  <rect x="200" y="120" width="60" height="30" class="link"/>
+  <text x="210" y="140" class="label">Upper Arm</text>
+
+  <rect x="260" y="160" width="30" height="60" class="link"/>
+  <text x="265" y="190" class="label">Lower</text>
+  <text x="265" y="205" class="label">Arm</text>
+
+  <!-- Left Leg -->
+  <rect x="110" y="200" width="40" height="60" class="link"/>
+  <text x="115" y="230" class="label">Upper Leg</text>
+
+  <rect x="110" y="260" width="40" height="60" class="link"/>
+  <text x="115" y="290" class="label">Lower Leg</text>
+
+  <!-- Right Leg -->
+  <rect x="150" y="200" width="40" height="60" class="link"/>
+  <text x="155" y="230" class="label">Upper Leg</text>
+
+  <rect x="150" y="260" width="40" height="60" class="link"/>
+  <text x="155" y="290" class="label">Lower Leg</text>
+
+  <!-- Joints -->
+  <circle cx="150" cy="100" r="8" class="joint"/>
+  <text x="155" y="95" class="data">Neck</text>
+
+  <circle cx="100" cy="120" r="8" class="joint"/>
+  <text x="105" y="115" class="data">Shoulder</text>
+
+  <circle cx="40" cy="160" r="8" class="joint"/>
+  <text x="45" y="155" class="data">Elbow</text>
+
+  <circle cx="220" cy="120" r="8" class="joint"/>
+  <text x="225" y="115" class="data">Shoulder</text>
+
+  <circle cx="260" cy="160" r="8" class="joint"/>
+  <text x="265" y="155" class="data">Elbow</text>
+
+  <circle cx="130" cy="200" r="8" class="joint"/>
+  <text x="135" y="195" class="data">Hip</text>
+
+  <circle cx="130" cy="260" r="8" class="joint"/>
+  <text x="135" y="255" class="data">Knee</text>
+
+  <circle cx="170" cy="200" r="8" class="joint"/>
+  <text x="175" y="195" class="data">Hip</text>
+
+  <circle cx="170" cy="260" r="8" class="joint"/>
+  <text x="175" y="255" class="data">Knee</text>
+
+  <!-- Coordinate Frames -->
+  <g transform="translate(150,130)">
+    <line x1="0" y1="0" x2="30" y2="0" stroke="red" stroke-width="2"/>
+    <text x="32" y="0" class="data" fill="red">X</text>
+    <line x1="0" y1="0" x2="0" y2="30" stroke="green" stroke-width="2"/>
+    <text x="0" y="35" class="data" fill="green">Y</text>
+    <line x1="0" y1="0" x2="-15" y2="-15" stroke="blue" stroke-width="2"/>
+    <text x="-25" y="-20" class="data" fill="blue">Z</text>
+    <circle cx="0" cy="0" r="3" class="frame"/>
+    <text x="5" y="-5" class="data">Frame</text>
+  </g>
+
+  <!-- URDF Components -->
+  <rect x="450" y="80" width="300" height="380" fill="#f9f9f9" stroke="#ccc"/>
+  <text x="460" y="100" class="subtitle">URDF Components</text>
+
+  <!-- Visual Properties -->
+  <rect x="470" y="120" width="260" height="80" fill="#e8f4e8" stroke="#2e8555" stroke-width="1"/>
+  <text x="480" y="140" class="label">Visual Properties</text>
+  <text x="480" y="160" class="data">- How robot appears</text>
+  <text x="480" y="175" class="data">- Meshes, colors, textures</text>
+  <text x="480" y="190" class="data">- Used in visualization</text>
+
+  <!-- Collision Properties -->
+  <rect x="470" y="210" width="260" height="80" fill="#ffe0e0" stroke="#a62c2c" stroke-width="1"/>
+  <text x="480" y="230" class="label">Collision Properties</text>
+  <text x="480" y="250" class="data">- Collision detection</text>
+  <text x="480" y="265" class="data">- Simple geometric shapes</text>
+  <text x="480" y="280" class="data">- Prevent self-collisions</text>
+
+  <!-- Inertial Properties -->
+  <rect x="470" y="300" width="260" height="80" fill="#e0e8ff" stroke="#2c5ca6" stroke-width="1"/>
+  <text x="480" y="320" class="label">Inertial Properties</text>
+  <text x="480" y="340" class="data">- Mass and inertia</text>
+  <text x="480" y="355" class="data">- Physics simulation</text>
+  <text x="480" y="370" class="data">- Control calculations</text>
+
+  <!-- Kinematic Chain -->
+  <text x="460" y="410" class="subtitle">Kinematic Chain Example</text>
+  <text x="470" y="430" class="data">base_link → body → arm → hand</text>
+</svg>

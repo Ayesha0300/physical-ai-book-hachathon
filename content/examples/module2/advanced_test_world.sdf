@@ -1,0 +1,423 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="advanced_test_world">
+    <!-- Include ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Include sun for lighting -->
+    <light name="sun" type="directional">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.3 0.3 -1</direction>
+    </light>
+
+    <!-- Different terrain types -->
+    <!-- Flat area -->
+    <model name="flat_area">
+      <pose>-5 0 0 0 0 0</pose>
+      <static>true</static>
+      <link name="flat_link">
+        <collision name="flat_collision">
+          <geometry>
+            <box>
+              <size>4 4 0.1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="flat_visual">
+          <geometry>
+            <box>
+              <size>4 4 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Rough terrain -->
+    <model name="rough_terrain">
+      <pose>0 0 0 0 0 0</pose>
+      <static>true</static>
+      <link name="rough_link">
+        <collision name="rough_collision">
+          <geometry>
+            <mesh>
+              <uri>model://rough_terrain.dae</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="rough_visual">
+          <geometry>
+            <mesh>
+              <uri>model://rough_terrain.dae</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Dirt</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Stairs -->
+    <model name="stairs">
+      <pose>5 0 0 0 0 0</pose>
+      <static>true</static>
+      <link name="stairs_base">
+        <collision name="stairs_base_collision">
+          <geometry>
+            <box>
+              <size>2 2 0.2</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="stairs_base_visual">
+          <geometry>
+            <box>
+              <size>2 2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/White</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_step1">
+        <pose>0 0 0.2 0 0 0</pose>
+        <collision name="stairs_step1_collision">
+          <geometry>
+            <box>
+              <size>1.8 2 0.2</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="stairs_step1_visual">
+          <geometry>
+            <box>
+              <size>1.8 2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/White</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_step2">
+        <pose>0 0 0.4 0 0 0</pose>
+        <collision name="stairs_step2_collision">
+          <geometry>
+            <box>
+              <size>1.6 2 0.2</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="stairs_step2_visual">
+          <geometry>
+            <box>
+              <size>1.6 2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/White</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_step3">
+        <pose>0 0 0.6 0 0 0</pose>
+        <collision name="stairs_step3_collision">
+          <geometry>
+            <box>
+              <size>1.4 2 0.2</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="stairs_step3_visual">
+          <geometry>
+            <box>
+              <size>1.4 2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/White</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Obstacles -->
+    <!-- Static wall -->
+    <model name="wall_obstacle">
+      <pose>-3 -3 0.5 0 0 0</pose>
+      <static>true</static>
+      <link name="wall_link">
+        <collision name="wall_collision">
+          <geometry>
+            <box>
+              <size>4 0.2 1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="wall_visual">
+          <geometry>
+            <box>
+              <size>4 0.2 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Blue</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Moving obstacle -->
+    <model name="moving_obstacle">
+      <pose>0 -4 0.5 0 0 0</pose>
+      <static>false</static>
+      <link name="moving_link">
+        <collision name="moving_collision">
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="moving_visual">
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Yellow</name>
+            </script>
+          </material>
+        </visual>
+        <inertial>
+          <mass>1.0</mass>
+          <inertia>
+            <ixx>0.1</ixx>
+            <iyy>0.1</iyy>
+            <izz>0.1</izz>
+          </inertia>
+        </inertial>
+      </link>
+      <!-- Simple trajectory plugin for movement -->
+      <plugin name="trajectory" filename="libgazebo_ros_p3d.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>10</updateRate>
+        <bodyName>moving_link</bodyName>
+        <topicName>moving_obstacle/pose</topicName>
+      </plugin>
+    </model>
+
+    <!-- Narrow passage -->
+    <model name="narrow_passage">
+      <pose>3 -3 0.5 0 0 0</pose>
+      <static>true</static>
+      <link name="left_pillar">
+        <collision name="left_pillar_collision">
+          <geometry>
+            <box>
+              <size>0.2 0.2 1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="left_pillar_visual">
+          <geometry>
+            <box>
+              <size>0.2 0.2 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Red</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <link name="right_pillar">
+        <pose>1 0 0 0 0 0</pose>
+        <collision name="right_pillar_collision">
+          <geometry>
+            <box>
+              <size>0.2 0.2 1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="right_pillar_visual">
+          <geometry>
+            <box>
+              <size>0.2 0.2 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Red</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Cluttered area with multiple small obstacles -->
+    <model name="cluttered_area">
+      <pose>0 4 0.2 0 0 0</pose>
+      <static>true</static>
+      <link name="clutter_base">
+        <collision name="clutter_base_collision">
+          <geometry>
+            <box>
+              <size>3 3 0.1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="clutter_base_visual">
+          <geometry>
+            <box>
+              <size>3 3 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Orange</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <!-- Small objects in cluttered area -->
+      <link name="clutter_object_1">
+        <pose>-0.8 0.8 0.15 0 0 0</pose>
+        <collision name="clutter_object_1_collision">
+          <geometry>
+            <sphere>
+              <radius>0.1</radius>
+            </sphere>
+          </geometry>
+        </collision>
+        <visual name="clutter_object_1_visual">
+          <geometry>
+            <sphere>
+              <radius>0.1</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Black</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <link name="clutter_object_2">
+        <pose>0.5 -0.7 0.15 0 0 0</pose>
+        <collision name="clutter_object_2_collision">
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.3</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="clutter_object_2_visual">
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Black</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <link name="clutter_object_3">
+        <pose>-0.3 0.3 0.15 0 0 0</pose>
+        <collision name="clutter_object_3_collision">
+          <geometry>
+            <cylinder>
+              <radius>0.08</radius>
+              <length>0.3</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="clutter_object_3_visual">
+          <geometry>
+            <cylinder>
+              <radius>0.08</radius>
+              <length>0.3</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Black</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Environment with different lighting conditions -->
+    <light name="spot_light" type="spot">
+      <pose>0 5 3 0 0 0</pose>
+      <diffuse>0.5 0.5 1 1</diffuse>
+      <specular>0.5 0.5 1 1</specular>
+      <attenuation>
+        <range>10</range>
+        <constant>0.2</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.1 -0.1 -1</direction>
+      <spot>
+        <inner_angle>0.1</inner_angle>
+        <outer_angle>0.5</outer_angle>
+        <falloff>0.8</falloff>
+      </spot>
+    </light>
+
+  </world>
+</sdf>

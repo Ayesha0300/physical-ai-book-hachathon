@@ -1,0 +1,549 @@
+/**
+ * Additional Component Styles
+ * Supplementary styling for custom components
+ */
+
+/* ============================================================================
+   LEARNING OBJECTIVES BOX
+   ========================================================================== */
+
+.learning-objectives {
+  background-color: rgba(6, 182, 212, 0.1);
+  border-left: 4px solid var(--accent-cyan);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+[data-theme='dark'] .learning-objectives {
+  background-color: rgba(6, 182, 212, 0.15);
+}
+
+.learning-objectives h3 {
+  color: var(--accent-cyan);
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.learning-objectives h3::before {
+  content: '🎯';
+  font-size: 1.5rem;
+}
+
+.learning-objectives ul {
+  margin-bottom: 0;
+}
+
+.learning-objectives li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+/* ============================================================================
+   MODULE OVERVIEW BOX
+   ========================================================================== */
+
+.module-overview {
+  background-color: var(--ifm-color-emphasis-100);
+  padding: 2rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  margin: 2rem 0;
+}
+
+[data-theme='dark'] .module-overview {
+  background-color: rgba(100, 116, 139, 0.1);
+  border-color: var(--doc-border-dark);
+}
+
+.module-overview h3 {
+  margin-top: 0;
+  color: var(--ifm-color-content);
+}
+
+/* ============================================================================
+   TECHNOLOGY STACK DISPLAY
+   ========================================================================== */
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.tech-stack-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--ifm-color-emphasis-100);
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+[data-theme='dark'] .tech-stack-item {
+  background-color: rgba(100, 116, 139, 0.2);
+}
+
+.tech-stack-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tech-stack-icon {
+  font-size: 1.25rem;
+}
+
+/* ============================================================================
+   PROGRESS INDICATOR
+   ========================================================================== */
+
+.progress-bar {
+  width: 100%;
+  height: 0.5rem;
+  background-color: var(--ifm-color-emphasis-200);
+  border-radius: 9999px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--ifm-color-primary), var(--ifm-color-primary-light));
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+/* ============================================================================
+   STEP INDICATOR (For tutorials)
+   ========================================================================== */
+
+.step-indicator {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.step-indicator-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.step-indicator-item::after {
+  content: '';
+  position: absolute;
+  top: 1.25rem;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: var(--ifm-color-emphasis-200);
+  z-index: 0;
+}
+
+.step-indicator-item:last-child::after {
+  display: none;
+}
+
+.step-indicator-circle {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--ifm-color-emphasis-200);
+  border: 3px solid var(--ifm-background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.step-indicator-item.active .step-indicator-circle {
+  background-color: var(--ifm-color-primary);
+  color: white;
+}
+
+.step-indicator-item.completed .step-indicator-circle {
+  background-color: var(--accent-success);
+  color: white;
+}
+
+.step-indicator-item.completed .step-indicator-circle::before {
+  content: '✓';
+}
+
+.step-indicator-label {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+  color: var(--ifm-color-content-secondary);
+}
+
+.step-indicator-item.active .step-indicator-label {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* ============================================================================
+   CODE COMPARISON (Side by side code blocks)
+   ========================================================================== */
+
+.code-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+@media (max-width: 768px) {
+  .code-comparison {
+    grid-template-columns: 1fr;
+  }
+}
+
+.code-comparison-item {
+  flex: 1;
+}
+
+.code-comparison-label {
+  background-color: var(--ifm-color-emphasis-100);
+  padding: 0.5rem 1rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--ifm-color-content);
+}
+
+[data-theme='dark'] .code-comparison-label {
+  background-color: var(--doc-bg-secondary-dark);
+}
+
+/* ============================================================================
+   QUIZ/EXERCISE BOX
+   ========================================================================== */
+
+.exercise-box {
+  background-color: rgba(139, 92, 246, 0.1);
+  border: 2px solid var(--accent-purple);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+[data-theme='dark'] .exercise-box {
+  background-color: rgba(139, 92, 246, 0.15);
+}
+
+.exercise-box h3 {
+  color: var(--accent-purple);
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.exercise-box h3::before {
+  content: '✏️';
+  font-size: 1.5rem;
+}
+
+/* ============================================================================
+   KEY CONCEPT HIGHLIGHT
+   ========================================================================== */
+
+.key-concept {
+  background: linear-gradient(135deg,
+    rgba(6, 182, 212, 0.1) 0%,
+    rgba(139, 92, 246, 0.1) 100%
+  );
+  border-left: 4px solid var(--ifm-color-primary);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0 0.75rem 0.75rem 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] .key-concept {
+  background: linear-gradient(135deg,
+    rgba(6, 182, 212, 0.15) 0%,
+    rgba(139, 92, 246, 0.15) 100%
+  );
+}
+
+.key-concept h3 {
+  color: var(--ifm-color-primary);
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.key-concept h3::before {
+  content: '💡';
+  font-size: 1.5rem;
+}
+
+/* ============================================================================
+   DEFINITION LIST STYLING
+   ========================================================================== */
+
+dl {
+  margin: 1.5rem 0;
+}
+
+dt {
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+  margin-top: 1rem;
+  font-size: 1.125rem;
+}
+
+dt:first-child {
+  margin-top: 0;
+}
+
+dd {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-content-secondary);
+}
+
+/* ============================================================================
+   VIDEO CONTAINER
+   ========================================================================== */
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.video-container iframe,
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ============================================================================
+   IMAGE WITH CAPTION
+   ========================================================================== */
+
+.image-with-caption {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.image-with-caption img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-caption {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--ifm-color-content-secondary);
+  font-style: italic;
+}
+
+/* ============================================================================
+   TABS (Custom tab styling)
+   ========================================================================== */
+
+.tabs {
+  border-bottom: 2px solid var(--ifm-color-emphasis-200);
+  margin-bottom: 1.5rem;
+}
+
+.tabs__item {
+  padding: 0.75rem 1.25rem;
+  border: none;
+  background: transparent;
+  color: var(--ifm-color-content-secondary);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+}
+
+.tabs__item:hover {
+  color: var(--ifm-color-primary);
+  background-color: var(--ifm-color-emphasis-50);
+}
+
+.tabs__item--active {
+  color: var(--ifm-color-primary);
+  border-bottom-color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+[data-theme='dark'] .tabs__item:hover {
+  background-color: rgba(100, 116, 139, 0.2);
+}
+
+/* ============================================================================
+   COLLAPSIBLE SECTION
+   ========================================================================== */
+
+.collapsible {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+.collapsible-header {
+  padding: 1rem 1.25rem;
+  background-color: var(--ifm-color-emphasis-100);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+[data-theme='dark'] .collapsible-header {
+  background-color: rgba(100, 116, 139, 0.2);
+}
+
+.collapsible-header:hover {
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+[data-theme='dark'] .collapsible-header:hover {
+  background-color: rgba(100, 116, 139, 0.3);
+}
+
+.collapsible-icon {
+  transition: transform 0.3s ease;
+}
+
+.collapsible.open .collapsible-icon {
+  transform: rotate(180deg);
+}
+
+.collapsible-content {
+  padding: 1.25rem;
+  display: none;
+}
+
+.collapsible.open .collapsible-content {
+  display: block;
+}
+
+/* ============================================================================
+   ALERT BANNERS
+   ========================================================================== */
+
+.alert {
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  border-left: 4px solid;
+}
+
+.alert-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.alert-content {
+  flex: 1;
+}
+
+.alert-info {
+  background-color: rgba(6, 182, 212, 0.1);
+  border-left-color: var(--accent-cyan);
+}
+
+[data-theme='dark'] .alert-info {
+  background-color: rgba(6, 182, 212, 0.15);
+}
+
+.alert-success {
+  background-color: rgba(16, 185, 129, 0.1);
+  border-left-color: var(--accent-success);
+}
+
+[data-theme='dark'] .alert-success {
+  background-color: rgba(16, 185, 129, 0.15);
+}
+
+.alert-warning {
+  background-color: rgba(245, 158, 11, 0.1);
+  border-left-color: var(--accent-warning);
+}
+
+[data-theme='dark'] .alert-warning {
+  background-color: rgba(245, 158, 11, 0.15);
+}
+
+.alert-error {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-left-color: var(--accent-error);
+}
+
+[data-theme='dark'] .alert-error {
+  background-color: rgba(239, 68, 68, 0.15);
+}
+
+/* ============================================================================
+   GRID LAYOUT UTILITIES
+   ========================================================================== */
+
+.grid-2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+@media (max-width: 996px) {
+  .grid-3col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-2col,
+  .grid-3col {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "module-1",
+    "title": "ROS 2 Control Systems",
+    "description": "Learn to build robust control systems for humanoid robots using ROS 2",
+    "tools": ["ROS 2", "Gazebo", "Python", "C++"],
+    "difficulty": "Intermediate",
+    "route": "/docs/module1-ros2/chapter1-why-robots-need-nervous-system"
+  },
+  {
+    "id": "module-2",
+    "title": "Simulation with Gazebo & Isaac",
+    "description": "Master physics-based simulation environments for robot testing and development",
+    "tools": ["Gazebo", "Isaac Sim", "Python", "C++"],
+    "difficulty": "Intermediate",
+    "route": "/docs/module2-digital-twin/chapter1-intro"
+  },
+  {
+    "id": "module-3",
+    "title": "Vision-Language-Action (VLA)",
+    "description": "Implement multimodal AI systems that connect perception with action",
+    "tools": ["LLMs", "Computer Vision", "PyTorch", "Transformers"],
+    "difficulty": "Advanced",
+    "route": "/docs/vla/vla-fundamentals"
+  },
+  {
+    "id": "module-4",
+    "title": "Autonomous Humanoid Capstone",
+    "description": "Integrate all concepts in a comprehensive humanoid robotics project",
+    "tools": ["ROS 2", "Gazebo", "Isaac Sim", "LLMs", "Python"],
+    "difficulty": "Advanced",
+    "route": "/docs/capstone"
+  }
+]

@@ -1,0 +1,111 @@
+.visual-diagram {
+  padding: 4rem 0;
+  background: var(--doc-bg-light);
+}
+
+[data-theme='dark'] .visual-diagram {
+  background: var(--doc-bg-dark);
+}
+
+.visual-diagram__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--doc-text-primary-light);
+}
+
+[data-theme='dark'] .visual-diagram__title {
+  color: var(--doc-text-primary-dark);
+}
+
+.visual-diagram__subtitle {
+  font-size: 1.25rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--doc-text-secondary-light);
+}
+
+[data-theme='dark'] .visual-diagram__subtitle {
+  color: var(--doc-text-secondary-dark);
+}
+
+.visual-diagram__steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.visual-diagram__step {
+  flex: 1;
+  min-width: 200px;
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-global-radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform var(--ifm-transition-fast), box-shadow var(--ifm-transition-fast);
+  position: relative;
+}
+
+.visual-diagram__step:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--ifm-global-shadow-md);
+}
+
+.visual-diagram__icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.visual-diagram__step-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-color-primary);
+}
+
+.visual-diagram__step-description {
+  font-size: 1rem;
+  color: var(--doc-text-secondary-light);
+  margin: 0;
+}
+
+[data-theme='dark'] .visual-diagram__step-description {
+  color: var(--doc-text-secondary-dark);
+}
+
+.visual-diagram__arrow {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--ifm-color-primary);
+  align-self: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .visual-diagram {
+    padding: 3rem 0;
+  }
+
+  .visual-diagram__title {
+    font-size: 2rem;
+  }
+
+  .visual-diagram__subtitle {
+    font-size: 1.125rem;
+  }
+
+  .visual-diagram__steps {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .visual-diagram__arrow {
+    transform: rotate(90deg);
+  }
+}

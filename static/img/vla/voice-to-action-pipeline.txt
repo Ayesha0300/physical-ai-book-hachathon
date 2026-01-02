@@ -1,0 +1,13 @@
+This is a placeholder for the voice-to-action pipeline diagram.
+
+The diagram should illustrate the flow from:
+Audio Input → Speech Recognition → Text Processing → Intent Extraction → Action Mapping → Robot Execution
+
+The pipeline should show:
+1. Audio capture from microphones
+2. Processing through speech recognition (e.g., OpenAI Whisper)
+3. Natural language understanding to extract intent
+4. Mapping to robot actions
+5. Execution with feedback and safety checks
+
+The diagram should emphasize the real-time nature and potential latency considerations.

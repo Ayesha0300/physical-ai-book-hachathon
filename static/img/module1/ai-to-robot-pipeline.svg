@@ -1,0 +1,143 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI to Physical Robot Pipeline">
+  <title>AI to Physical Robot Pipeline</title>
+  <desc>This diagram shows the complete pipeline from AI decision to physical robot action. It includes layers: AI Decision, Task Planning, Motion Planning, Trajectory Generation, Control, Actuation, and Physical Robot. It also shows the ROS 2 middleware that connects these layers and the simulation environment.</desc>
+  <style>
+    .title { font: bold 16px sans-serif; fill: #333; }
+    .subtitle { font: 14px sans-serif; fill: #555; }
+    .ai { fill: #e0e8ff; stroke: #2c5ca6; stroke-width: 2; rx: 8; ry: 8; }
+    .planning { fill: #e8e0ff; stroke: #5c2ca6; stroke-width: 2; rx: 8; ry: 8; }
+    .control { fill: #ffe0e0; stroke: #a62c2c; stroke-width: 2; rx: 8; ry: 8; }
+    .physical { fill: #e0f0e0; stroke: #2c852c; stroke-width: 2; rx: 8; ry: 8; }
+    .arrow { stroke: #666; stroke-width: 2; marker-end: url(#arrowhead); }
+    .label { font: 12px sans-serif; fill: #333; }
+    .data { font: 10px sans-serif; fill: #555; }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7"
+      refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="250" y="30" class="title">AI to Physical Robot Pipeline</text>
+
+  <!-- AI Layer -->
+  <rect x="50" y="80" width="140" height="100" class="ai"/>
+  <text x="70" y="100" class="subtitle">AI Decision Layer</text>
+  <text x="60" y="125" class="label">"Fetch red cup"</text>
+  <text x="60" y="145" class="data">Natural language</text>
+  <text x="60" y="160" class="data">Symbolic goals</text>
+
+  <!-- Task Planning Layer -->
+  <rect x="220" y="80" width="140" height="100" class="planning"/>
+  <text x="230" y="100" class="subtitle">Task Planning</text>
+  <text x="230" y="125" class="label">[NAVIGATE, DETECT,</text>
+  <text x="230" y="140" class="label">APPROACH, GRASP]</text>
+  <text x="230" y="160" class="data">Task decomposition</text>
+
+  <!-- Motion Planning Layer -->
+  <rect x="400" y="80" width="140" height="100" class="planning"/>
+  <text x="410" y="100" class="subtitle">Motion Planning</text>
+  <text x="410" y="125" class="label">Path planning</text>
+  <text x="410" y="140" class="label">Collision avoidance</text>
+  <text x="410" y="160" class="data">Kinematic constraints</text>
+
+  <!-- Trajectory Generation Layer -->
+  <rect x="580" y="80" width="140" height="100" class="planning"/>
+  <text x="590" y="100" class="subtitle">Trajectory</text>
+  <text x="590" y="115" class="subtitle">Generation</text>
+  <text x="590" y="140" class="label">Joint trajectories</text>
+  <text x="590" y="160" class="data">Smooth motion</text>
+
+  <!-- Control Layer -->
+  <rect x="220" y="220" width="140" height="100" class="control"/>
+  <text x="230" y="240" class="subtitle">Control Layer</text>
+  <text x="230" y="265" class="label">PID control</text>
+  <text x="230" y="280" class="label">Feedback control</text>
+  <text x="230" y="295" class="data">Real-time execution</text>
+
+  <!-- Actuation Layer -->
+  <rect x="400" y="220" width="140" height="100" class="control"/>
+  <text x="410" y="240" class="subtitle">Actuation</text>
+  <text x="410" y="265" class="label">Motor drivers</text>
+  <text x="410" y="280" class="label">Power electronics</text>
+  <text x="410" y="295" class="data">Physical motion</text>
+
+  <!-- Physical Robot -->
+  <rect x="580" y="220" width="140" height="100" class="physical"/>
+  <text x="590" y="240" class="subtitle">Physical Robot</text>
+  <text x="590" y="265" class="label">Joints move</text>
+  <text x="590" y="280" class="label">Gripper grasps</text>
+  <text x="590" y="295" class="data">Physical action</text>
+
+  <!-- Digital Brain -->
+  <rect x="50" y="220" width="140" height="100" class="ai"/>
+  <text x="60" y="240" class="subtitle">Digital Brain</text>
+  <text x="60" y="265" class="label">Python AI</text>
+  <text x="60" y="280" class="label">ROS 2 Nodes</text>
+  <text x="60" y="295" class="data">rclpy interface</text>
+
+  <!-- Arrows between layers -->
+  <line x1="190" y1="130" x2="220" y2="130" class="arrow"/>
+  <text x="200" y="125" class="data">Task plan</text>
+
+  <line x1="360" y1="130" x2="400" y2="130" class="arrow"/>
+  <text x="370" y="125" class="data">Path</text>
+
+  <line x1="540" y1="130" x2="580" y2="130" class="arrow"/>
+  <text x="550" y="125" class="data">Trajectory</text>
+
+  <line x1="500" y1="180" x2="470" y2="220" class="arrow"/>
+  <text x="480" y="200" class="data">Commands</text>
+
+  <line x1="360" y1="270" x2="400" y2="270" class="arrow"/>
+  <text x="370" y="265" class="data">Joint commands</text>
+
+  <line x1="540" y1="270" x2="580" y2="270" class="arrow"/>
+  <text x="550" y="265" class="data">Physical motion</text>
+
+  <line x1="190" y1="270" x2="220" y2="270" class="arrow"/>
+  <text x="200" y="265" class="data">AI decisions</text>
+
+  <!-- ROS 2 Middleware -->
+  <rect x="200" y="360" width="360" height="80" fill="#f0f0ff" stroke="#aaa"/>
+  <text x="210" y="380" class="subtitle">ROS 2 Middleware</text>
+  <text x="210" y="400" class="data">Topics, Services, Actions</text>
+  <text x="210" y="415" class="data">rclpy, DDS, TF2</text>
+
+  <!-- Communication arrows -->
+  <line x1="120" y1="320" x2="120" y2="360" class="arrow"/>
+  <text x="130" y="340" class="data">ROS 2</text>
+
+  <line x1="300" y1="320" x2="300" y2="360" class="arrow"/>
+  <text x="310" y="340" class="data">ROS 2</text>
+
+  <line x1="480" y1="320" x2="480" y2="360" class="arrow"/>
+  <text x="490" y="340" class="data">ROS 2</text>
+
+  <!-- Simulation Connection -->
+  <rect x="50" y="460" width="670" height="100" fill="#fff0e0" stroke="#d97200"/>
+  <text x="60" y="480" class="subtitle">Simulation Environment (Gazebo/Isaac)</text>
+  <text x="60" y="500" class="data">- Same ROS 2 interfaces</text>
+  <text x="60" y="515" class="data">- Physics simulation</text>
+  <text x="60" y="530" class="data">- Sensor simulation</text>
+  <text x="60" y="545" class="data">- Training environment</text>
+
+  <!-- Simulation arrows -->
+  <line x1="400" y1="440" x2="400" y2="460" class="arrow"/>
+  <text x="410" y="450" class="data">Simulated</text>
+
+  <!-- Legend -->
+  <rect x="650" y="50" width="140" height="100" fill="white" stroke="#ccc"/>
+  <text x="660" y="70" class="subtitle">Legend</text>
+  <rect x="660" y="80" width="15" height="15" class="ai"/>
+  <text x="680" y="92" class="label">AI</text>
+  <rect x="660" y="100" width="15" height="15" class="planning"/>
+  <text x="680" y="112" class="label">Planning</text>
+  <rect x="660" y="120" width="15" height="15" class="control"/>
+  <text x="680" y="132" class="label">Control</text>
+  <rect x="660" y="140" width="15" height="15" class="physical"/>
+  <text x="680" y="152" class="label">Physical</text>
+</svg>

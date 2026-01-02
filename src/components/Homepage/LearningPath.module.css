@@ -1,0 +1,133 @@
+.learning-path {
+  padding: 4rem 0;
+  background-color: var(--doc-bg-secondary-light);
+}
+
+[data-theme='dark'] .learning-path {
+  background-color: var(--doc-bg-dark);
+}
+
+.learning-path__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--doc-text-primary-light);
+}
+
+[data-theme='dark'] .learning-path__title {
+  color: var(--doc-text-primary-dark);
+}
+
+.learning-path__subtitle {
+  font-size: 1.25rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--doc-text-secondary-light);
+}
+
+[data-theme='dark'] .learning-path__subtitle {
+  color: var(--doc-text-secondary-dark);
+}
+
+.learning-path__steps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.learning-path__step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 1.5rem;
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-global-radius);
+  transition: transform var(--ifm-transition-fast), box-shadow var(--ifm-transition-fast);
+}
+
+.learning-path__step:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ifm-global-shadow-md);
+}
+
+.learning-path__step-number {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ifm-color-primary);
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.learning-path__step-content {
+  flex: 1;
+  text-align: left;
+}
+
+.learning-path__step-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--doc-text-primary-light);
+}
+
+[data-theme='dark'] .learning-path__step-title {
+  color: var(--doc-text-primary-dark);
+}
+
+.learning-path__step-description {
+  font-size: 1rem;
+  color: var(--doc-text-secondary-light);
+  margin: 0;
+}
+
+[data-theme='dark'] .learning-path__step-description {
+  color: var(--doc-text-secondary-dark);
+}
+
+.learning-path__arrow {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--ifm-color-primary);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .learning-path {
+    padding: 3rem 0;
+  }
+
+  .learning-path__title {
+    font-size: 2rem;
+  }
+
+  .learning-path__subtitle {
+    font-size: 1.125rem;
+  }
+
+  .learning-path__steps {
+    gap: 1.5rem;
+  }
+
+  .learning-path__step {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .learning-path__arrow {
+    display: none;
+  }
+}
