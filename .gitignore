@@ -60,3 +60,35 @@ Thumbs.db
 # Docusaurus specific
 .docusaurus/
 .server/
+
+# Python specific
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git/modules/
+.pytest_cache/
+.hypothesis/
+venv/
+ENV/
+.venv/
+env/
+ENV/
+.ENV/
+env.bak/
+ENV.bak/
+.ENV.bak/
