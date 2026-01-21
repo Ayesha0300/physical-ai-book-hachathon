@@ -51,9 +51,14 @@ const config = {
         theme: {
           customCss: './src/css/custom.css',
         },
+        gtag: {
+          trackingID: 'G-XXXXXXXXXX',
+          anonymizeIP: true,
+        },
       }),
     ],
   ],
+
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -69,32 +74,70 @@ const config = {
         {name: 'twitter:site', content: '@physicalai'},
       ],
       navbar: {
-        title: 'Physical AI Book',
+        title: 'Physical AI & Humanoid Robotics',
         logo: {
           alt: 'Physical AI Logo',
           src: 'img/logo.svg',
         },
+        hideOnScroll: true,
         items: [
           {
             to: '/',
             label: 'Home',
             position: 'left',
             exact: true,
+            className: 'navbar-home-link',
           },
           {
             to: '/modules',
             label: 'Modules',
             position: 'left',
+            className: 'navbar-modules-link',
           },
           {
-            to: '/docs/capstone',
+            type: 'dropdown',
+            label: 'Learning Paths',
+            position: 'left',
+            items: [
+              {
+                type: 'doc',
+                label: 'ROS 2 Control Systems',
+                docId: 'module1-ros2/chapter1-why-robots-need-nervous-system',
+              },
+              {
+                type: 'doc',
+                label: 'Simulation with Gazebo & Isaac',
+                docId: 'module2-digital-twin/chapter1-intro',
+              },
+              {
+                type: 'doc',
+                label: 'Vision-Language-Action (VLA)',
+                docId: 'vla/vla-fundamentals',
+              },
+              {
+                type: 'doc',
+                label: 'Autonomous Humanoid Capstone',
+                docId: 'capstone/README',
+              },
+            ],
+            className: 'navbar-learning-paths-dropdown',
+          },
+          {
+            to: '/docs/capstone/README',
             label: 'Capstone',
             position: 'left',
+            className: 'navbar-capstone-link',
           },
           {
             to: '/docs/hardware',
             label: 'Hardware',
             position: 'left',
+            className: 'navbar-hardware-link',
+          },
+          {
+            type: 'search',
+            position: 'right',
+            className: 'navbar-search-item',
           },
           {
             href: 'https://github.com/your-username/physical-ai-book',
@@ -102,37 +145,38 @@ const config = {
             position: 'right',
             className: 'navbar-github-link',
           },
+          {
+            type: 'docsVersionDropdown',
+            position: 'right',
+            className: 'navbar-version-dropdown',
+          },
         ],
       },
       footer: {
         style: 'dark',
         links: [
           {
-            title: 'Modules',
+            title: 'Learning Paths',
             items: [
               {
                 label: 'All Modules',
                 to: '/modules',
               },
               {
-                label: 'Module 1: ROS 2',
+                label: 'ROS 2 Control Systems',
                 to: '/docs/module1-ros2/chapter1-why-robots-need-nervous-system',
               },
               {
-                label: 'Module 2: Digital Twin',
+                label: 'Simulation with Gazebo & Isaac',
                 to: '/docs/module2-digital-twin/chapter1-intro',
               },
               {
-                label: 'Module 3: Isaac Sim',
-                to: '/docs/module3-isaac/chapter1-from-middleware-to-intelligence',
-              },
-              {
-                label: 'Module 4: VLA',
+                label: 'Vision-Language-Action (VLA)',
                 to: '/docs/vla/vla-fundamentals',
               },
               {
-                label: 'Capstone Project',
-                to: '/docs/capstone',
+                label: 'Autonomous Humanoid Capstone',
+                to: '/docs/capstone/README',
               },
             ],
           },
@@ -140,11 +184,11 @@ const config = {
             title: 'Resources',
             items: [
               {
-                label: 'Get Started',
+                label: 'Getting Started',
                 to: '/docs/intro',
               },
               {
-                label: 'Hardware Setup',
+                label: 'Hardware Guide',
                 to: '/docs/hardware',
               },
               {
@@ -152,8 +196,12 @@ const config = {
                 to: '/docs/glossary',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/your-username/physical-ai-book',
+                label: 'API Reference',
+                to: '/docs/api-reference',
+              },
+              {
+                label: 'Troubleshooting',
+                to: '/docs/troubleshooting',
               },
             ],
           },
@@ -161,16 +209,41 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'License',
-                href: 'https://creativecommons.org/licenses/by/4.0/',
-              },
-              {
-                label: 'Contribute',
-                href: 'https://github.com/your-username/physical-ai-book/blob/main/CONTRIBUTING.md',
+                label: 'GitHub Repository',
+                href: 'https://github.com/your-username/physical-ai-book',
               },
               {
                 label: 'Discussions',
                 href: 'https://github.com/your-username/physical-ai-book/discussions',
+              },
+              {
+                label: 'Contributing Guide',
+                href: 'https://github.com/your-username/physical-ai-book/blob/main/CONTRIBUTING.md',
+              },
+              {
+                label: 'License',
+                href: 'https://creativecommons.org/licenses/by/4.0/',
+              },
+            ],
+          },
+          {
+            title: 'More',
+            items: [
+              {
+                label: 'Blog',
+                to: '/blog',
+              },
+              {
+                label: 'Documentation',
+                to: '/docs/intro',
+              },
+              {
+                label: 'Support',
+                href: 'mailto:support@example.com',
+              },
+              {
+                label: 'Status',
+                href: 'https://status.example.com',
               },
             ],
           },
@@ -184,7 +257,7 @@ const config = {
       colorMode: {
         defaultMode: 'dark',
         disableSwitch: false,
-        respectPrefersColorScheme: false,
+        respectPrefersColorScheme: true,
       },
     }),
 
@@ -215,6 +288,11 @@ const config = {
         crossorigin: 'anonymous',
       },
     },
+  ],
+
+  // Add custom wrapper to include floating chatbot on all pages
+  clientModules: [
+    require.resolve('./src/Root.jsx'),
   ],
 };
 

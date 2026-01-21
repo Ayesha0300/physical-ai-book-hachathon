@@ -208,3 +208,16 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 
 ## Code Standards
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
+
+## Active Technologies
+- Python 3.11 + qdrant-client, cohere (for embeddings), requests, python-dotenv (001-rag-pipeline-validation)
+- Vector database (Qdrant) with pre-existing embedded book content (001-rag-pipeline-validation)
+- Python 3.11 + FastAPI, OpenAI Agents SDK, Qdrant client, python-dotenv (004-rag-backend-frontend)
+- Qdrant Cloud (vector database), local `.env` for configuration (004-rag-backend-frontend)
+- Python 3.11, JavaScript/TypeScript for Docusaurus + FastAPI, OpenAI Agents SDK, Qdrant client, Docusaurus, React (004-rag-backend-frontend)
+- Vector database (Qdrant Cloud) for document embeddings (004-rag-backend-frontend)
+- JavaScript (ES2020+), Python 3.11 + React 18, Docusaurus 3.1, FastAPI 0.104, Tailwind CSS (007-global-chatbot)
+- In-memory session storage for conversation context, Qdrant vector database for document retrieval (007-global-chatbot)
+
+## Recent Changes
+- 001-rag-pipeline-validation: Added Python 3.11 + qdrant-client, cohere (for embeddings), requests, python-dotenv
