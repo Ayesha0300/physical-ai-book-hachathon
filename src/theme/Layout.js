@@ -1,6 +1,7 @@
 import React from 'react';
 import OriginalLayout from '@theme-original/Layout';
 import { MDXProvider } from '@mdx-js/react';
+import FloatingChatbot from '../components/Chatbot/FloatingChatbot';
 
 // Import custom components that should be available globally
 import CodeBlock from '../components/CodeBlock';
@@ -33,6 +34,7 @@ function Layout(props) {
   return (
     <MDXProvider components={components}>
       <OriginalLayout {...props} />
+      <FloatingChatbot />
     </MDXProvider>
   );
 }
