@@ -92,8 +92,10 @@ class RAGAgent:
             # Construct the prompt with context
             system_prompt = f"You are a helpful assistant. Use the following context to answer the user's question:\n\n{context_text}\n\nIf the context doesn't contain the information needed to answer the question, please say so."
 
+            # Get model name from environment variable, with fallback to default
+            model_name = os.getenv('model_name', 'mistralai/mistral-7b-instruct:free')
             response = self.openai_client.chat.completions.create(
-                model="mistralai/mistral-7b-instruct:free",  # Using a free model from OpenRouter
+                model=model_name,  # Using the model from environment config
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_query}
