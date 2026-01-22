@@ -51,10 +51,6 @@ const config = {
         theme: {
           customCss: './src/css/custom.css',
         },
-        gtag: {
-          trackingID: 'G-XXXXXXXXXX',
-          anonymizeIP: true,
-        },
       }),
     ],
   ],
@@ -123,18 +119,6 @@ const config = {
             className: 'navbar-learning-paths-dropdown',
           },
           {
-            to: '/docs/capstone/README',
-            label: 'Capstone',
-            position: 'left',
-            className: 'navbar-capstone-link',
-          },
-          {
-            to: '/docs/hardware',
-            label: 'Hardware',
-            position: 'left',
-            className: 'navbar-hardware-link',
-          },
-          {
             type: 'search',
             position: 'right',
             className: 'navbar-search-item',
@@ -174,10 +158,6 @@ const config = {
                 label: 'Vision-Language-Action (VLA)',
                 to: '/docs/vla/vla-fundamentals',
               },
-              {
-                label: 'Autonomous Humanoid Capstone',
-                to: '/docs/capstone/README',
-              },
             ],
           },
           {
@@ -186,10 +166,6 @@ const config = {
               {
                 label: 'Getting Started',
                 to: '/docs/intro',
-              },
-              {
-                label: 'Hardware Guide',
-                to: '/docs/hardware',
               },
               {
                 label: 'Glossary',

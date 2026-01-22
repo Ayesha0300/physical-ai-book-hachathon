@@ -3,74 +3,19 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HeroSection from '@site/src/components/Homepage/HeroSection';
-import CurriculumOverview from '@site/src/components/Homepage/CurriculumOverview';
 import LearningPath from '@site/src/components/Homepage/LearningPath';
-import VisualDiagram from '@site/src/components/Homepage/VisualDiagram';
 import styles from './index.module.css';
 
 
 function FeatureCard({ icon, title, description }) {
   return (
-    <div className={styles.featureCard} role="article" aria-labelledby={`feature-title-${title.replace(/\s+/g, '-').toLowerCase()}`}>
+    <div className={styles.featureCard} role="article" aria-labelledby={`feature-title
+    
+    -${title.replace(/\s+/g, '-').toLowerCase()}`}>
       <div className={styles.featureIcon} aria-hidden="true">{icon}</div>
       <h3 id={`feature-title-${title.replace(/\s+/g, '-').toLowerCase()}`} className={styles.featureTitle}>{title}</h3>
       <p className={styles.featureDescription}>{description}</p>
     </div>
-  );
-}
-
-function FeaturesSection() {
-  const features = [
-    {
-      icon: '🎯',
-      title: 'Comprehensive Curriculum',
-      description: 'From basic ROS 2 concepts to advanced Vision-Language-Action models, covering the complete physical AI stack.'
-    },
-    {
-      icon: '💻',
-      title: 'Hands-On Projects',
-      description: 'Build real robots with practical exercises, simulations, and a capstone humanoid project.'
-    },
-    {
-      icon: '🚀',
-      title: 'Modern Technologies',
-      description: 'Learn ROS 2, Gazebo, NVIDIA Isaac Sim, Isaac ROS, and cutting-edge VLA models.'
-    },
-    {
-      icon: '📊',
-      title: 'Industry-Relevant',
-      description: 'Skills directly applicable to robotics companies, research labs, and AI startups.'
-    },
-    {
-      icon: '🧩',
-      title: 'Modular Learning',
-      description: 'Progress at your own pace with structured modules building on each other.'
-    },
-    {
-      icon: '🌐',
-      title: 'Real-World Focus',
-      description: 'Bridge the sim-to-real gap with practical strategies for deploying robots in production.'
-    }
-  ];
-
-  return (
-    <section className={styles.featuresSection} aria-labelledby="features-section-title">
-      <div className={styles.container}>
-        <div className={styles.sectionHeader}>
-          <h2 id="features-section-title" className={styles.sectionTitle}>Why This Book?</h2>
-          <p className={styles.sectionSubtitle}>
-            A complete learning path designed for the next generation of robotics engineers
-          </p>
-        </div>
-        <div className={styles.featuresGrid} role="list">
-          {features.map((feature, idx) => (
-            <div key={idx} role="listitem">
-              <FeatureCard {...feature} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -190,10 +135,7 @@ export default function Home() {
       description={siteConfig.tagline}>
       <main>
         <HeroSection />
-        <CurriculumOverview />
         <LearningPath />
-        <VisualDiagram />
-        <FeaturesSection />
         <ModulesSection />
         <CTASection />
       </main>
