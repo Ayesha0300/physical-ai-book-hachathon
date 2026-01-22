@@ -171,14 +171,6 @@ const config = {
                 label: 'Glossary',
                 to: '/docs/glossary',
               },
-              {
-                label: 'API Reference',
-                to: '/docs/api-reference',
-              },
-              {
-                label: 'Troubleshooting',
-                to: '/docs/troubleshooting',
-              },
             ],
           },
           {
@@ -205,10 +197,6 @@ const config = {
           {
             title: 'More',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
               {
                 label: 'Documentation',
                 to: '/docs/intro',
