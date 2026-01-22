@@ -56,6 +56,12 @@
   --accent-purple: #7c3aed;
   --accent-purple-light: #a78bfa;
   --accent-purple-dark: #6d28d9;
+  --accent-indigo: #6366f1;
+  --accent-indigo-light: #818cf8;
+  --accent-indigo-dark: #4f46e5;
+  --accent-teal: #0d9488;
+  --accent-teal-light: #14b8a6;
+  --accent-teal-dark: #0f766e;
   --accent-success: #10b981;
   --accent-success-light: #34d399;
   --accent-success-dark: #059669;
@@ -67,13 +73,17 @@
   --accent-error-dark: #b91c1c;
   --accent-neutral: #6b7280;
   --accent-neutral-light: #9ca3af;
+  --accent-neutral-dark: #4b5563;
 
   /* ===== GRADIENTS ===== */
   --gradient-primary: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--accent-purple) 100%);
   --gradient-accent: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-purple) 100%);
-  --gradient-success: linear-gradient(135deg, var(--accent-success) 0%, var(--accent-cyan) 100%);
+  --gradient-indigo: linear-gradient(135deg, var(--accent-indigo) 0%, var(--accent-purple) 100%);
+  --gradient-teal: linear-gradient(135deg, var(--accent-teal) 0%, var(--accent-cyan) 100%);
+  --gradient-success: linear-gradient(135deg, var(--accent-success) 0%, var(--accent-teal) 100%);
   --gradient-warning: linear-gradient(135deg, var(--accent-warning) 0%, var(--accent-orange, #fb923c) 100%);
   --gradient-error: linear-gradient(135deg, var(--accent-error) 0%, var(--accent-red, #ef4444) 100%);
+  --gradient-hero: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-indigo) 50%, var(--accent-purple) 100%);
 
   /* ===== TECHNOLOGY COLORS ===== */
   --tech-ros: #ff6600;
@@ -823,6 +833,188 @@ tbody tr:hover {
   background: rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   backdrop-filter: blur(4px);
+}
+
+/* Homepage module card specific styling */
+.admonition-module {
+  margin-bottom: 2.5rem;
+  padding: 2.25rem;
+  border-left-width: 6px;
+  border-radius: 1.5rem;
+  box-shadow: var(--ifm-global-shadow-lg);
+  position: relative;
+  overflow: hidden;
+  background: var(--doc-surface-card);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-top: 2px solid rgba(255, 255, 255, 0.4);
+  border-right: 2px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+.admonition-module:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 25px 70px rgba(6, 182, 212, 0.25),
+              0 12px 25px rgba(0, 0, 0, 0.2);
+  border-left-color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .admonition-module {
+  background: var(--doc-surface-card-dark);
+}
+
+.admonition-module::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--ifm-color-primary), var(--accent-purple));
+  opacity: 1;
+  transition: all 0.4s ease;
+}
+
+.admonition-module::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top right, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+  transition: opacity 0.4s ease;
+}
+
+.admonition-module:hover::after {
+  opacity: 0.8;
+}
+
+.admonition-module > * {
+  position: relative;
+  z-index: 1;
+}
+
+.admonition-module .admonition-heading {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--ifm-color-emphasis-200);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.admonition-module .admonition-heading .admonition-icon {
+  background: linear-gradient(135deg, var(--ifm-color-primary), var(--accent-purple));
+  color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.125rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+}
+
+.admonition-module .admonition-content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.admonition-module .admonition-content p {
+  margin-bottom: 1.25rem;
+  color: var(--doc-text-secondary-light);
+}
+
+[data-theme='dark'] .admonition-module .admonition-content p {
+  color: var(--doc-text-secondary-dark);
+}
+
+.admonition-module .button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(6, 182, 212, 0.2);
+}
+
+.admonition-module .button:hover {
+  transform: translateX(6px) translateY(-2px);
+  box-shadow: 0 6px 16px rgba(6, 182, 212, 0.3);
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--ifm-color-primary-dark), var(--accent-purple-dark));
+}
+
+.admonition-module .button.button--secondary:hover {
+  background: linear-gradient(135deg, var(--ifm-color-primary), var(--accent-purple));
+}
+
+[data-theme='dark'] .admonition-module .admonition-heading {
+  border-bottom-color: var(--doc-border-dark);
+}
+
+/* Enhanced module card category badges */
+.module-category-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, var(--ifm-color-primary), var(--accent-purple));
+  color: white;
+  box-shadow: 0 2px 6px rgba(6, 182, 212, 0.2);
+}
+
+
+.module-tools {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+[data-theme='dark'] .module-tools {
+  border-top-color: var(--doc-border-dark);
+}
+
+.module-tools strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--doc-text-secondary-light);
+  font-size: 0.875rem;
+}
+
+[data-theme='dark'] .module-tools strong {
+  color: var(--doc-text-secondary-dark);
+}
+
+.module-tools code {
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  font-size: 0.8rem;
+  padding: 0.125rem 0.375rem;
+}
+
+[data-theme='dark'] .module-tools code {
+  background: rgba(6, 182, 212, 0.2);
+  border-color: var(--doc-border-dark);
 }
 
 /* Note - Blue/Cyan */
@@ -1997,6 +2189,439 @@ select:focus-visible {
 }
 
 /* ============================================================================
+   HOVER EFFECTS AND ANIMATIONS - Enhanced Interactive Elements
+   ========================================================================== */
+
+/* Curriculum items hover effect */
+.curriculum-item {
+  transition: all 0.3s ease;
+  background: var(--doc-surface-card);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.curriculum-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .curriculum-item {
+  background: var(--doc-surface-card-dark);
+  border-color: var(--doc-border-dark);
+}
+
+/* Benefit items hover effect */
+.benefit-item {
+  transition: all 0.3s ease;
+  background: var(--doc-surface-card);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.benefit-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+  border-color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .benefit-item {
+  background: var(--doc-surface-card-dark);
+  border-color: var(--doc-border-dark);
+}
+
+/* Path step hover effect */
+.path-step {
+  transition: all 0.3s ease;
+  background: var(--doc-surface-card);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.path-step:hover {
+  transform: translateX(8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-theme='dark'] .path-step {
+  background: var(--doc-surface-card-dark);
+  border-color: var(--doc-border-dark);
+}
+
+/* Process step hover effect */
+.process-step {
+  transition: all 0.3s ease;
+  background: var(--doc-surface-card);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.process-step:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-theme='dark'] .process-step {
+  background: var(--doc-surface-card-dark);
+  border-color: var(--doc-border-dark);
+}
+
+/* Home page hero section theme fixes */
+.hero-section {
+  background: linear-gradient(135deg, var(--doc-bg-secondary-light) 0%, var(--doc-bg-light) 100%);
+}
+
+[data-theme='dark'] .hero-section {
+  background: linear-gradient(135deg, var(--doc-bg-secondary-dark) 0%, var(--doc-bg-dark) 100%);
+}
+
+[data-theme='dark'] .hero-section div[style*="radial-gradient"] {
+  background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+}
+
+.hero-subtitle {
+  color: var(--doc-text-secondary-light) !important;
+}
+
+[data-theme='dark'] .hero-subtitle {
+  color: var(--doc-text-secondary-dark) !important;
+}
+
+.hero-tagline {
+  color: var(--doc-text-primary-light) !important;
+}
+
+[data-theme='dark'] .hero-tagline {
+  color: var(--doc-text-primary-dark) !important;
+}
+
+.section-title {
+  background: var(--gradient-accent) !important;
+  backgroundClip: text !important;
+  WebkitBackgroundClip: text !important;
+  color: transparent !important;
+}
+
+[data-theme='dark'] .section-title {
+  background: var(--gradient-accent) !important;
+}
+
+/* Curriculum grid theme fixes */
+.curriculum-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.curriculum-item {
+  padding: 1.5rem;
+  background: var(--doc-surface-card);
+  border-radius: 1rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-theme='dark'] .curriculum-item {
+  background: var(--doc-surface-card-dark);
+  border-color: var(--doc-border-dark);
+}
+
+.curriculum-item h3 {
+  color: var(--ifm-color-primary) !important;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+[data-theme='dark'] .curriculum-item h3 {
+  color: var(--ifm-color-primary-light) !important;
+}
+
+.curriculum-item p {
+  margin: 0;
+  color: var(--doc-text-secondary-light);
+}
+
+[data-theme='dark'] .curriculum-item p {
+  color: var(--doc-text-secondary-dark);
+}
+
+/* Learning path theme fixes */
+.learning-path {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 600px;
+  margin: 2rem auto;
+  position: relative;
+}
+
+.path-step {
+  background: var(--doc-surface-card);
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] .path-step {
+  background: var(--doc-surface-card-dark);
+  border-color: var(--doc-border-dark);
+}
+
+.path-step h3 {
+  margin: 0;
+  color: var(--ifm-color-primary) !important;
+  font-size: 1.25rem;
+}
+
+[data-theme='dark'] .path-step h3 {
+  color: var(--ifm-color-primary-light) !important;
+}
+
+.path-step p {
+  margin: 0.5rem 0 0 0;
+  color: var(--doc-text-secondary-light);
+}
+
+[data-theme='dark'] .path-step p {
+  color: var(--doc-text-secondary-dark);
+}
+
+/* Benefits grid theme fixes */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.benefit-item {
+  padding: 1.75rem;
+  background: var(--doc-surface-card);
+  border-radius: 1rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-theme='dark'] .benefit-item {
+  background: var(--doc-surface-card-dark);
+  border-color: var(--doc-border-dark);
+}
+
+.benefit-item h3 {
+  color: var(--ifm-color-primary) !important;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+[data-theme='dark'] .benefit-item h3 {
+  color: var(--ifm-color-primary-light) !important;
+}
+
+.benefit-item p {
+  margin: 0;
+  color: var(--doc-text-secondary-light);
+}
+
+[data-theme='dark'] .benefit-item p {
+  color: var(--doc-text-secondary-dark);
+}
+
+/* Process flow theme fixes */
+.process-flow {
+  background: var(--doc-surface-card);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+[data-theme='dark'] .process-flow {
+  background: var(--doc-surface-card-dark);
+  border-color: var(--doc-border-dark);
+}
+
+.process-step {
+  background: var(--doc-surface-card);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+[data-theme='dark'] .process-step {
+  background: var(--doc-surface-card-dark);
+  border-color: var(--doc-border-dark);
+}
+
+.process-step strong {
+  color: var(--ifm-color-primary) !important;
+}
+
+[data-theme='dark'] .process-step strong {
+  color: var(--ifm-color-primary-light) !important;
+}
+
+.process-step span {
+  color: var(--doc-text-muted-light) !important;
+}
+
+[data-theme='dark'] .process-step span {
+  color: var(--doc-text-muted-dark) !important;
+}
+
+/* CTA section theme fixes */
+.cta-section {
+  background: var(--gradient-accent);
+  color: white;
+}
+
+.cta-title {
+  color: white !important;
+}
+
+.cta-subtitle {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.cta-buttons .button--outline {
+  background: white;
+  color: var(--ifm-color-primary);
+  border: 2px solid white;
+}
+
+.cta-buttons .button--outline:nth-child(2) {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+[data-theme='dark'] .cta-buttons .button--outline:hover {
+  background: white;
+  color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .cta-buttons .button--outline:nth-child(2):hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+
+/* Button hover effects */
+.button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--ifm-global-shadow-lg);
+}
+
+.button--primary:hover {
+  background: linear-gradient(135deg, var(--ifm-color-primary-dark), var(--ifm-color-primary));
+}
+
+.button--secondary:hover {
+  background: linear-gradient(135deg, var(--ifm-color-primary), var(--accent-purple));
+  border-color: var(--ifm-color-primary);
+  color: white;
+}
+
+/* CTA button hover effects */
+.cta-section .button--outline:hover {
+  background: white;
+  color: var(--ifm-color-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.cta-section .button--outline:nth-child(2):hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Hero section animation */
+.hero-section {
+  animation: fadeInUp 0.8s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section divider animation */
+.section-divider {
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.section-divider:nth-child(2) { animation-delay: 0.1s; }
+.section-divider:nth-child(3) { animation-delay: 0.2s; }
+.section-divider:nth-child(4) { animation-delay: 0.3s; }
+
+/* Module grid animation */
+.module-grid {
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+/* CTA section animation */
+.cta-section {
+  animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+/* Card hover effects */
+.card--elevated {
+  transition: all 0.3s ease;
+}
+
+.card--elevated:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--ifm-global-shadow-xl);
+}
+
+/* Admonition hover effects */
+.admonition {
+  transition: all 0.3s ease;
+}
+
+.admonition:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ifm-global-shadow-xl);
+}
+
+/* Link hover effects */
+a {
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================================
    UTILITIES - Enhanced Modern Components
    ========================================================================== */
 
@@ -2775,6 +3400,101 @@ html.smooth-scroll {
     min-height: 44px;
     padding: 0.75rem 1rem;
   }
+
+  /* Responsive adjustments for homepage elements */
+  .hero-section {
+    padding: 2.5rem 1rem 2rem;
+  }
+
+  .hero-title {
+    font-size: 2rem !important;
+  }
+
+  .hero-subtitle,
+  .hero-tagline {
+    font-size: 1.125rem;
+  }
+
+  .section-divider {
+    margin: 2rem 0;
+  }
+
+  .section-title {
+    font-size: 2rem !important;
+  }
+
+  .curriculum-grid,
+  .benefits-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+
+  .curriculum-item,
+  .benefit-item {
+    padding: 1.25rem;
+  }
+
+  .learning-path {
+    max-width: 100%;
+    margin: 1.5rem auto;
+  }
+
+  .path-step {
+    padding: 1rem;
+  }
+
+  .process-flow {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .process-step {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .module-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+
+  .admonition-module {
+    padding: 1.75rem;
+    min-height: auto;
+  }
+
+  .admonition-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .admonition-icon {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
+
+  .cta-section {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .cta-title {
+    font-size: 1.75rem !important;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .cta-buttons .button {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
 }
 
 /* Tablet (768px - 996px) */
@@ -2809,6 +3529,33 @@ html.smooth-scroll {
   /* Tablet sidebar adjustments */
   .menu {
     padding: 1.25rem 1rem;
+  }
+
+  /* Tablet homepage adjustments */
+  .hero-section {
+    padding: 3rem 1.5rem 2.5rem;
+  }
+
+  .curriculum-grid,
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.25rem;
+  }
+
+  .learning-path {
+    max-width: 100%;
+  }
+
+  .process-flow {
+    flex-wrap: nowrap;
+  }
+
+  .process-step {
+    min-width: 100px;
+  }
+
+  .cta-section {
+    padding: 3rem 2rem;
   }
 }
 
@@ -2953,4 +3700,87 @@ html.smooth-scroll {
   pre, blockquote, table {
     page-break-inside: avoid;
   }
+}
+
+/* ============================================================================
+   HOMEPAGE ADDITIONAL THEME FIXES - Ensuring all elements work in both themes
+   ========================================================================== */
+
+/* Section dividers */
+.section-divider {
+  margin: 3rem 0;
+  text-align: center;
+}
+
+/* Section titles */
+.section-title {
+  font-size: 2.5rem;
+  background: var(--gradient-accent);
+  backgroundClip: text;
+  WebkitBackgroundClip: text;
+  color: transparent;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+/* Divider lines */
+[data-theme='dark'] .section-divider div[style*="position: 'absolute'"] {
+  background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+}
+
+/* Process flow arrows */
+.process-step ~ div[style*="font-size"] {
+  color: var(--ifm-color-primary) !important;
+}
+
+[data-theme='dark'] .process-step ~ div[style*="font-size"] {
+  color: var(--ifm-color-primary-light) !important;
+}
+
+/* Code elements in homepage */
+.process-step code,
+.benefit-item code,
+.curriculum-item code {
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+[data-theme='dark'] .process-step code,
+[data-theme='dark'] .benefit-item code,
+[data-theme='dark'] .curriculum-item code {
+  background: var(--doc-surface-dark);
+  border-color: var(--doc-border-dark);
+}
+
+/* Buttons in module cards */
+.admonition-module .button {
+  background: linear-gradient(135deg, var(--ifm-color-primary), var(--accent-purple));
+  color: white;
+  border: none;
+}
+
+.admonition-module .button:hover {
+  background: linear-gradient(135deg, var(--ifm-color-primary-dark), var(--accent-purple-dark));
+  color: white;
+  text-decoration: none;
+}
+
+/* Ensure proper text contrast */
+[data-theme='dark'] .benefit-item h3,
+[data-theme='dark'] .curriculum-item h3,
+[data-theme='dark'] .path-step h3 {
+  color: var(--ifm-color-primary-light) !important;
+}
+
+[data-theme='dark'] .benefit-item p,
+[data-theme='dark'] .curriculum-item p,
+[data-theme='dark'] .path-step p {
+  color: var(--doc-text-secondary-dark) !important;
+}
+
+/* Module category badges in dark mode */
+[data-theme='dark'] .module-category-badge {
+  background: linear-gradient(135deg, var(--ifm-color-primary-light), var(--accent-purple-light));
+  color: white;
 }

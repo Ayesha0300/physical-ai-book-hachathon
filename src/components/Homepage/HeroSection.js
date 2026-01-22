@@ -18,7 +18,7 @@ const HeroSection = () => {
             <p className="hero__subtitle" id="hero-description">
               {siteConfig.tagline}
             </p>
-            <p className="hero__subtitle">
+            <p className="hero__tagline">
               Bridging the Digital Brain with the Physical Body
             </p>
             <div className="hero__buttons" role="group" aria-labelledby="hero-title">
