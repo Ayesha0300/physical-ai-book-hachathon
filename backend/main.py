@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import logging
+import os
 
 # Import the API router from the api module
 from api import router
@@ -56,12 +57,14 @@ async def health_check():
         "configured_qdrant": bool(getattr(Config, 'QDRANT_URL', None))
     }
 
+# For Vercel deployment, we need to expose the app instance
+# The wsgi.py file imports this app instance
 if __name__ == "__main__":
-    # Run the application with uvicorn
+    # Run the application with uvicorn locally
     uvicorn.run(
         "main:app",
         host="0.0.0.0",
-        port=8000,
+        port=int(os.getenv("PORT", 8000)),
         reload=True,
         log_level=getattr(Config, 'LOG_LEVEL', 'info').lower()
     )
