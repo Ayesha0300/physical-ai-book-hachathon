@@ -20,17 +20,25 @@ class RAGAgent:
         Args:
             answer_only_mode: If True, the agent will only answer based on selected text
         """
-        # Read OpenRouter API key from environment
-        self.openrouter_api_key = os.getenv('OPENROUTER_API_KEY')
+        # Use the configuration from Config class
+        self.openrouter_api_key = Config.OPENROUTER_API_KEY
 
+        # Fallback to OpenAI API key if OpenRouter is not configured
         if not self.openrouter_api_key:
-            raise ValueError("OPENROUTER_API_KEY environment variable is required")
+            self.openrouter_api_key = Config.OPENAI_API_KEY
+            if not self.openrouter_api_key:
+                raise ValueError("Either OPENROUTER_API_KEY or OPENAI_API_KEY environment variable is required")
 
-        # Initialize OpenAI client with OpenRouter base URL
-        self.openai_client = OpenAI(
-            api_key=self.openrouter_api_key,
-            base_url="https://openrouter.ai/api/v1"
-        )
+            # If using OpenAI API key, use the OpenAI base URL instead
+            self.openai_client = OpenAI(
+                api_key=self.openrouter_api_key
+            )
+        else:
+            # Initialize OpenAI client with OpenRouter base URL
+            self.openai_client = OpenAI(
+                api_key=self.openrouter_api_key,
+                base_url="https://openrouter.ai/api/v1"
+            )
 
         self.answer_only_mode = answer_only_mode
 
@@ -92,8 +100,14 @@ class RAGAgent:
             # Construct the prompt with context
             system_prompt = f"You are a helpful assistant. Use the following context to answer the user's question:\n\n{context_text}\n\nIf the context doesn't contain the information needed to answer the question, please say so."
 
-            # Get model name from environment variable, with fallback to default
-            model_name = os.getenv('model_name', 'mistralai/mistral-7b-instruct:free')
+            # Use the model from configuration, with fallback to default
+            if hasattr(Config, 'OPENROUTER_MODEL'):
+                model_name = Config.OPENROUTER_MODEL
+            elif hasattr(Config, 'OPENAI_MODEL'):
+                model_name = Config.OPENAI_MODEL
+            else:
+                model_name = 'mistralai/mistral-7b-instruct:free'  # fallback default
+
             response = self.openai_client.chat.completions.create(
                 model=model_name,  # Using the model from environment config
                 messages=[
