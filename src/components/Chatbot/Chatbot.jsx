@@ -50,8 +50,8 @@ const Chatbot = () => {
         conversation_id: conversationId || null
       };
 
-      // Send request to backend
-      const response = await fetch('https://ayeshabashir030-deploy.hf.space/api/v1/chat', {
+      // Send request to backend - using relative path for same-domain deployment
+      const response = await fetch('/api/v1/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
