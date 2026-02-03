@@ -1,26 +1,15 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "backend/wsgi.py",
-      "use": "@vercel/python"
-    },
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build"
-      }
+  "framework": "docusaurus",
+  "functions": {
+    "backend/wsgi.py": {
+      "runtime": "python3.9"
     }
-  ],
-  "routes": [
+  },
+  "rewrites": [
     {
-      "src": "/api/v1/(.*)",
-      "dest": "backend/wsgi.py"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/build/$1"
+      "source": "/api/v1/:path*",
+      "destination": "/backend/wsgi.py"
     }
   ]
 }
