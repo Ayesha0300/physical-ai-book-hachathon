@@ -22,23 +22,26 @@ class RAGAgent:
         """
         # Use the configuration from Config class
         self.openrouter_api_key = Config.OPENROUTER_API_KEY
+        self.openai_api_key = Config.OPENAI_API_KEY
 
-        # Fallback to OpenAI API key if OpenRouter is not configured
-        if not self.openrouter_api_key:
-            self.openrouter_api_key = Config.OPENAI_API_KEY
-            if not self.openrouter_api_key:
-                raise ValueError("Either OPENROUTER_API_KEY or OPENAI_API_KEY environment variable is required")
+        # Set up API key - try OpenRouter first, then fallback to OpenAI
+        api_key = self.openrouter_api_key or self.openai_api_key
 
-            # If using OpenAI API key, use the OpenAI base URL instead
-            self.openai_client = OpenAI(
-                api_key=self.openrouter_api_key
-            )
+        if not api_key:
+            # Store for later error handling - we won't raise an exception here
+            # to allow the server to start, but will handle the error during query
+            self.openai_client = None
         else:
-            # Initialize OpenAI client with OpenRouter base URL
-            self.openai_client = OpenAI(
-                api_key=self.openrouter_api_key,
-                base_url="https://openrouter.ai/api/v1"
-            )
+            # Determine which base URL to use based on which API key is available
+            if self.openrouter_api_key:
+                self.openai_client = OpenAI(
+                    api_key=api_key,
+                    base_url="https://openrouter.ai/api/v1"
+                )
+            else:
+                self.openai_client = OpenAI(
+                    api_key=api_key
+                )
 
         self.answer_only_mode = answer_only_mode
 
@@ -53,6 +56,10 @@ class RAGAgent:
             Generated response based on retrieved context
         """
         try:
+            # Check if API client is initialized
+            if not self.openai_client:
+                return "Error: API key is not configured. Please contact the administrator to set up the required API keys (either OPENROUTER_API_KEY or OPENAI_API_KEY)."
+
             # Retrieve relevant context from Qdrant
             context_chunks = self.retrieve_context(user_query)
 
