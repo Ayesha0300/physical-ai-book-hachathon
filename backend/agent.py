@@ -20,17 +20,28 @@ class RAGAgent:
         Args:
             answer_only_mode: If True, the agent will only answer based on selected text
         """
-        # Read OpenRouter API key from environment
-        self.openrouter_api_key = os.getenv('OPENROUTER_API_KEY')
+        # Use the configuration from Config class
+        self.openrouter_api_key = Config.OPENROUTER_API_KEY
+        self.openai_api_key = Config.OPENAI_API_KEY
 
-        if not self.openrouter_api_key:
-            raise ValueError("OPENROUTER_API_KEY environment variable is required")
+        # Set up API key - try OpenRouter first, then fallback to OpenAI
+        api_key = self.openrouter_api_key or self.openai_api_key
 
-        # Initialize OpenAI client with OpenRouter base URL
-        self.openai_client = OpenAI(
-            api_key=self.openrouter_api_key,
-            base_url="https://openrouter.ai/api/v1"
-        )
+        if not api_key:
+            # Store for later error handling - we won't raise an exception here
+            # to allow the server to start, but will handle the error during query
+            self.openai_client = None
+        else:
+            # Determine which base URL to use based on which API key is available
+            if self.openrouter_api_key:
+                self.openai_client = OpenAI(
+                    api_key=api_key,
+                    base_url="https://openrouter.ai/api/v1"
+                )
+            else:
+                self.openai_client = OpenAI(
+                    api_key=api_key
+                )
 
         self.answer_only_mode = answer_only_mode
 
@@ -45,6 +56,10 @@ class RAGAgent:
             Generated response based on retrieved context
         """
         try:
+            # Check if API client is initialized
+            if not self.openai_client:
+                return "Error: API key is not configured. Please contact the administrator to set up the required API keys (either OPENROUTER_API_KEY or OPENAI_API_KEY)."
+
             # Retrieve relevant context from Qdrant
             context_chunks = self.retrieve_context(user_query)
 
@@ -92,8 +107,14 @@ class RAGAgent:
             # Construct the prompt with context
             system_prompt = f"You are a helpful assistant. Use the following context to answer the user's question:\n\n{context_text}\n\nIf the context doesn't contain the information needed to answer the question, please say so."
 
-            # Get model name from environment variable, with fallback to default
-            model_name = os.getenv('model_name', 'mistralai/mistral-7b-instruct:free')
+            # Use the model from configuration, with fallback to default
+            if hasattr(Config, 'OPENROUTER_MODEL'):
+                model_name = Config.OPENROUTER_MODEL
+            elif hasattr(Config, 'OPENAI_MODEL'):
+                model_name = Config.OPENAI_MODEL
+            else:
+                model_name = 'mistralai/mistral-7b-instruct:free'  # fallback default
+
             response = self.openai_client.chat.completions.create(
                 model=model_name,  # Using the model from environment config
                 messages=[

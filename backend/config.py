@@ -18,6 +18,8 @@ class Config:
     GEMINI_MODEL = os.getenv('GEMINI_MODEL', 'gemini-2.5-flash')
     OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
     OPENAI_MODEL = os.getenv('OPENAI_MODEL', 'gpt-4-turbo')
+    OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY')  # Added missing attribute
+    OPENROUTER_MODEL = os.getenv('OPENROUTER_MODEL', 'stepfun/step-3.5-flash:free')
     CHUNK_SIZE = int(os.getenv('CHUNK_SIZE', '512'))
     CHUNK_OVERLAP = int(os.getenv('CHUNK_OVERLAP', '50'))
     REQUEST_TIMEOUT = int(os.getenv('REQUEST_TIMEOUT', '30'))
@@ -36,7 +38,7 @@ class Config:
             ('COHERE_API_KEY', cls.COHERE_API_KEY),
             ('QDRANT_URL', cls.QDRANT_URL),
             ('QDRANT_API_KEY', cls.QDRANT_API_KEY),
-            ('OPENROUTER_API_KEY', os.getenv('OPENROUTER_API_KEY'))
+            ('OPENROUTER_API_KEY', cls.OPENROUTER_API_KEY)  # Use class attribute
         ]
 
         missing_configs = []
