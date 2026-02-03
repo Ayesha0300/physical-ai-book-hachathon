@@ -20,14 +20,14 @@
   font-size: 3.5rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  color: #1e293b; /* Deep charcoal blue - dark enough for great contrast in light theme */
+  color: var(--doc-text-primary-light); /* Use theme variable for proper contrast in light mode */
   line-height: 1.2;
   letter-spacing: -0.02em;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.03); /* Very subtle shadow */
 }
 
 [data-theme='dark'] .hero__title {
-  color: #f1f5f9; /* Soft white/blue-white for better contrast in dark theme */
+  color: var(--doc-text-primary-dark); /* Use theme variable for proper contrast in dark mode */
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Slightly stronger shadow in dark mode */
 }
 

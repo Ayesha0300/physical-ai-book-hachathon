@@ -1295,16 +1295,22 @@ body.chatbot-open main {
 .navbar__title {
   font-weight: 800;
   font-size: 1.25rem;
-  color: var(--accent-purple); /* Proper dark purple color */
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--accent-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   transition: all 0.3s ease;
   letter-spacing: -0.025em;
-  text-shadow: 0 2px 4px rgba(124, 61, 173, 0.1); /* Dark purple shadow */
+  text-shadow: 0 2px 4px rgba(6, 182, 212, 0.1);
 }
 
-/* Enhanced contrast for navbar title in dark mode */
+/* Enhanced contrast for navbar title in both themes - light text in dark mode for readability */
 [data-theme='dark'] .navbar__title {
-  color: var(--accent-purple-light); /* Lighter purple for dark mode readability */
-  text-shadow: 0 2px 4px rgba(167, 139, 250, 0.15); /* Lighter purple shadow */
+  background: linear-gradient(135deg, var(--doc-text-primary-dark) 0%, var(--doc-text-secondary-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(248, 250, 252, 0.15);
 }
 
 .navbar__items {
