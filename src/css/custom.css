@@ -1304,13 +1304,13 @@ body.chatbot-open main {
   text-shadow: 0 2px 4px rgba(6, 182, 212, 0.1);
 }
 
-/* Enhanced contrast for navbar title in both themes */
+/* Enhanced contrast for navbar title in both themes - light text in dark mode for readability */
 [data-theme='dark'] .navbar__title {
-  background: linear-gradient(135deg, var(--ifm-color-primary-light) 0%, var(--accent-purple-light) 100%);
+  background: linear-gradient(135deg, var(--doc-text-primary-dark) 0%, var(--doc-text-secondary-dark) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 2px 4px rgba(56, 189, 248, 0.15);
+  text-shadow: 0 2px 4px rgba(248, 250, 252, 0.15);
 }
 
 .navbar__items {
